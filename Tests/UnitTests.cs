@@ -114,6 +114,7 @@ namespace GithubActionsLab
             Assert.AreEqual(125, Program.Power("5", "3"));
         }
 
+        
         [Test]
         public void Power_Invalid_Bharath()
         {
