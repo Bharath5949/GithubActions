@@ -72,28 +72,23 @@ namespace GithubActionsLab
         {
             return double.Parse(x) - double.Parse(y);
         }
-
         public static double Multiply(string x, string y)
         {
             return double.Parse(x) * double.Parse(y);
         }
-
         public static double Divide(string x, string y)
         {
             return double.Parse(x) / double.Parse(y);
         }
 
+        // Implement this method following a similar pattern as above
         public static double Power(string x, string y)
         {
-            double baseNumber;
-            double exponent;
-
-            if (!double.TryParse(x, out baseNumber) || !double.TryParse(y, out exponent))
-            {
-                throw new ArgumentException("Invalid input. Please enter valid numeric values for x and y.");
-            }
-
-            return Math.Pow(baseNumber, exponent);
+            // throw new NotImplementedException();
+            return Math.Pow(double.Parse(x), double.Parse(y));
         }
     }
+
+
+
 }
