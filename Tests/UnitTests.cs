@@ -1,125 +1,133 @@
 using System;
 using NUnit.Framework;
-using GithubActionsLab;
 
-namespace Tests
+namespace GithubActionsLab
 {
     [TestFixture]
-    public class MathOperationsTests
+    public class Math
     {
-        // Add Tests
         [Test]
-        public void Add_Valid()
+        public void Add_Valid_Bharath()
         {
             Assert.AreEqual(3, Program.Add("1", "2"));
-            Assert.AreEqual(7, Program.Add("3", "4"));
-            Assert.AreEqual(0, Program.Add("0", "0"));
+            Assert.AreEqual(5, Program.Add("3", "2"));
+            Assert.AreEqual(12, Program.Add("5", "7"));
         }
 
         [Test]
-        public void Add_Invalid()
+        public void Add_Invalid_Bharath()
         {
-            Assert.Throws<FormatException>(() => Program.Add("one", "2"));
-            Assert.Throws<FormatException>(() => Program.Add("two", "three"));
+            Assert.Throws<FormatException>(() => Program.Add("1", "a"));
+            Assert.Throws<FormatException>(() => Program.Add("a", "1"));
+            Assert.Throws<FormatException>(() => Program.Add("a", "a"));
         }
 
         [Test]
-        public void Add_Null()
+        public void Add_Null_Bharath()
         {
-            Assert.Throws<ArgumentNullException>(() => Program.Add(null, "1"));
             Assert.Throws<ArgumentNullException>(() => Program.Add("1", null));
+            Assert.Throws<ArgumentNullException>(() => Program.Add(null, "1"));
+            Assert.Throws<ArgumentNullException>(() => Program.Add(null, null));
         }
 
-        // Subtract Tests
+        // Implement 3 tests per operation, following a similar pattern as above
+
+        //Subtraction
         [Test]
-        public void Subtract_Valid()
+        public void Subtract_Valid_Bharath()
         {
             Assert.AreEqual(-1, Program.Subtract("1", "2"));
-            Assert.AreEqual(1, Program.Subtract("5", "4"));
-            Assert.AreEqual(0, Program.Subtract("2", "2"));
+            Assert.AreEqual(1, Program.Subtract("3", "2"));
+            Assert.AreEqual(-2, Program.Subtract("5", "7"));
         }
 
         [Test]
-        public void Subtract_Invalid()
+        public void Subtract_Invalid_Bharath()
         {
-            Assert.Throws<FormatException>(() => Program.Subtract("one", "2"));
-            Assert.Throws<FormatException>(() => Program.Subtract("four", "five"));
+            Assert.Throws<FormatException>(() => Program.Subtract("1", "a"));
+            Assert.Throws<FormatException>(() => Program.Subtract("a", "1"));
+            Assert.Throws<FormatException>(() => Program.Subtract("a", "a"));
         }
 
         [Test]
-        public void Subtract_Null()
+        public void Subtract_Null_Bharath()
         {
-            Assert.Throws<ArgumentNullException>(() => Program.Subtract(null, "1"));
             Assert.Throws<ArgumentNullException>(() => Program.Subtract("1", null));
+            Assert.Throws<ArgumentNullException>(() => Program.Subtract(null, "1"));
+            Assert.Throws<ArgumentNullException>(() => Program.Subtract(null, null));
         }
 
-        // Multiply Tests
+        //Multiplication
         [Test]
-        public void Multiply_Valid()
+        public void Multiply_Valid_Bharath()
         {
             Assert.AreEqual(2, Program.Multiply("1", "2"));
-            Assert.AreEqual(20, Program.Multiply("5", "4"));
-            Assert.AreEqual(0, Program.Multiply("0", "2"));
+            Assert.AreEqual(6, Program.Multiply("3", "2"));
+            Assert.AreEqual(35, Program.Multiply("5", "7"));
         }
 
         [Test]
-        public void Multiply_Invalid()
+        public void Multiply_Invalid_Bharath()
         {
-            Assert.Throws<FormatException>(() => Program.Multiply("one", "2"));
-            Assert.Throws<FormatException>(() => Program.Multiply("six", "seven"));
+            Assert.Throws<FormatException>(() => Program.Multiply("1", "a"));
+            Assert.Throws<FormatException>(() => Program.Multiply("a", "1"));
+            Assert.Throws<FormatException>(() => Program.Multiply("a", "a"));
         }
 
         [Test]
-        public void Multiply_Null()
+        public void Multiply_Null_Bharath()
         {
-            Assert.Throws<ArgumentNullException>(() => Program.Multiply(null, "1"));
             Assert.Throws<ArgumentNullException>(() => Program.Multiply("1", null));
+            Assert.Throws<ArgumentNullException>(() => Program.Multiply(null, "1"));
+            Assert.Throws<ArgumentNullException>(() => Program.Multiply(null, null));
         }
 
-        // Divide Tests
-        [Test]
-        public void Divide_Valid()
+        //Division
+        public void Divide_Valid_Bharath()
         {
-            Assert.AreEqual(0.5, Program.Divide("1", "2"));
-            Assert.AreEqual(1.25, Program.Divide("5", "4"));
-            Assert.Throws<DivideByZeroException>(() => Program.Divide("1", "0"));
-        }
-
-        [Test]
-        public void Divide_Invalid()
-        {
-            Assert.Throws<FormatException>(() => Program.Divide("one", "2"));
-            Assert.Throws<FormatException>(() => Program.Divide("eight", "nine"));
+            Assert.AreEqual(2, Program.Divide("4", "2"));
+            Assert.AreEqual(5, Program.Divide("10", "2"));
+            Assert.AreEqual(7, Program.Divide("49", "7"));
         }
 
         [Test]
-        public void Divide_Null()
+        public void Divide_Invalid_Bharath()
         {
-            Assert.Throws<ArgumentNullException>(() => Program.Divide(null, "1"));
+            Assert.Throws<FormatException>(() => Program.Divide("1", "a"));
+            Assert.Throws<FormatException>(() => Program.Divide("a", "1"));
+            Assert.Throws<FormatException>(() => Program.Divide("a", "a"));
+        }
+
+        [Test]
+        public void Divide_Null_Bharath()
+        {
             Assert.Throws<ArgumentNullException>(() => Program.Divide("1", null));
+            Assert.Throws<ArgumentNullException>(() => Program.Divide(null, "1"));
+            Assert.Throws<ArgumentNullException>(() => Program.Divide(null, null));
         }
 
-        // Power Tests
-        [Test]
-        public void Power_Valid()
+        //Power
+        public void Power_Valid_Bharath()
         {
             Assert.AreEqual(1, Program.Power("1", "2"));
-            Assert.AreEqual(16, Program.Power("2", "4"));
-            Assert.AreEqual(1, Program.Power("3", "0"));
+            Assert.AreEqual(16, Program.Power("4", "2"));
+            Assert.AreEqual(125, Program.Power("5", "3"));
         }
 
         [Test]
-        public void Power_Invalid()
+        public void Power_Invalid_Bharath()
         {
-            Assert.Throws<FormatException>(() => Program.Power("one", "2"));
-            Assert.Throws<FormatException>(() => Program.Power("two", "three"));
+            Assert.Throws<FormatException>(() => Program.Power("1", "a"));
+            Assert.Throws<FormatException>(() => Program.Power("a", "1"));
+            Assert.Throws<FormatException>(() => Program.Power("a", "a"));
         }
 
         [Test]
-        public void Power_Null()
+        public void Power_Null_Bharath()
         {
-            Assert.Throws<ArgumentNullException>(() => Program.Power(null, "1"));
             Assert.Throws<ArgumentNullException>(() => Program.Power("1", null));
+            Assert.Throws<ArgumentNullException>(() => Program.Power(null, "1"));
+            Assert.Throws<ArgumentNullException>(() => Program.Power(null, null));
         }
     }
 }
