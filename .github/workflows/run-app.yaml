@@ -5,19 +5,32 @@ on: [push, pull_request]
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v2
+      - uses: actions/checkout@v2
+      
+      # Set up .NET Core
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.301' # Ensure this version is still supported and relevant for your project
-      - uses: nuget/setup-nuget@v1
-        with:
-          nuget-version: 'latest' # Use the latest NuGet version
+          dotnet-version: '5.0.301' # Make sure this version matches your project requirements
+      
+      # Set up NuGet
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v1
+      
+      # Restore NuGet packages
       - name: Nuget Restore
         run: nuget restore GithubActions.sln
+      
+      # Restore dependencies
       - name: Install dependencies
         run: dotnet restore GithubActions.sln
+      
+      # Build the project in Release configuration
       - name: Build
-        run: dotnet build GithubActions.sln --configuration Release --no-restore
+        run: dotnet build GithubActions.sln --configuration Release --no-restore -verbosity:detailed
+      
+      # Run NUnit tests
       - name: Run Unit Tests
-        run: dotnet test GithubActions.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.xml"
+        run: dotnet test GithubActions.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.xml" --verbosity:normal
